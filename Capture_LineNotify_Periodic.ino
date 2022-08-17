@@ -17,11 +17,6 @@ time_t next_alarm_calc(){
 void CaptureScreen_LineNotify_Periodic(){
   time_t cur_alarm   = secs_of_day(hour(), minute(), second());
   time_t next_alarm  = next_alarm_calc();
-
-
-
-  BlynkGO.alarmOnce( /* เวลานาฬิกาที่ต้องการ alarm ในหน่วยวินาทีของวัน */, 
-                     /* ชื่อฟังกชั่นที่ต้องการเรียกให้ทำงาน */ );
   
   // ตั้งเวลาให้ Alarm รอบถัดไป ตามเวลาที่กำหนด เพื่อให้เรียก CaptureScreen_LineNotify_Periodic() ขึ้นมาทำงาน
   BlynkGO.alarmOnce(next_alarm, CaptureScreen_LineNotify_Periodic);
